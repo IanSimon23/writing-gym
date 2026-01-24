@@ -48,6 +48,25 @@
       "timestamp": "2026-01-24T18:55:25.681Z",
       "type": "win",
       "content": "Completed prototype learning loop! ComparisonView shows self vs AI scores side-by-side with delta indicators (overestimate/underestimate), AI reasoning, average scores, and Revise Draft button for iteration."
+    },
+    {
+      "id": "6634ac27-590d-4543-8ea5-048d232b5bc3",
+      "timestamp": "2026-01-24T19:18:48.220Z",
+      "type": "commit",
+      "message": "Complete prototype learning loop: draft input, self-assessment, AI assessment, and comparison view",
+      "gitHash": "e27467dc6a3677117bb5a3db3868b1852fea1e28"
+    },
+    {
+      "id": "1de2af32-f8ea-4f9a-b530-d0c9086e390a",
+      "timestamp": "2026-01-24T19:19:05.986Z",
+      "type": "win",
+      "content": "Working prototype of The Writing Gym\\! Full coaching loop: pre-draft questions → criteria extraction → draft writing → self-assessment → AI assessment → comparison with blind spot detection. Coach, don't rewrite."
+    },
+    {
+      "id": "58797931-5609-4060-aa7b-53e189c3c88f",
+      "timestamp": "2026-01-24T19:49:54.805Z",
+      "type": "win",
+      "content": "Split-view workspace refactor complete - draft editor always visible alongside scrollable iteration history. Starting to feel commercial-ready."
     }
   ]
 }
