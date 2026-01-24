@@ -74,6 +74,13 @@
       "type": "commit",
       "message": "Refactor to split-view workspace with persistent draft editor and scrollable iteration history",
       "gitHash": "73d074c2eee170d22531c9238195a072c10883cd"
+    },
+    {
+      "id": "a52d36ab-f613-477b-ac51-3aeae794a66d",
+      "timestamp": "2026-01-24T20:19:23.733Z",
+      "type": "commit",
+      "message": "Update CLAUDE.md with split-view design, add README.md for GitHub",
+      "gitHash": "be2202ee7387bfb48e3dc299e666b3d89953e206"
     }
   ]
 }
