@@ -81,6 +81,19 @@
       "type": "commit",
       "message": "Update CLAUDE.md with split-view design, add README.md for GitHub",
       "gitHash": "be2202ee7387bfb48e3dc299e666b3d89953e206"
+    },
+    {
+      "id": "aa2e5b5f-e934-4d0c-a6bc-320dc39acda5",
+      "timestamp": "2026-01-24T20:28:55.254Z",
+      "type": "commit",
+      "message": "Add AGPL-3.0 license",
+      "gitHash": "1826c1ddba51a69992615f022ef1b398ada5e6a6"
+    },
+    {
+      "id": "500a4ce4-5058-499b-8baf-7f982754b680",
+      "timestamp": "2026-01-27T20:50:23.232Z",
+      "type": "win",
+      "content": "Writing Gym is live! Deployed to Vercel with serverless API functions and custom domain at writing-gym.curiouscoach.tools"
     }
   ]
 }
