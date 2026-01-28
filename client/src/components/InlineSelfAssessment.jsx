@@ -1,12 +1,5 @@
 import { useState } from 'react'
-
-const SCALE_LABELS = {
-  1: 'Strongly disagree',
-  2: 'Disagree',
-  3: 'Neutral',
-  4: 'Agree',
-  5: 'Strongly agree'
-}
+import { getScaleValues, SCALE_LABELS } from '../config'
 
 function InlineSelfAssessment({ criteria, onSubmit, isLoading = false }) {
   const [scores, setScores] = useState(() => {
@@ -44,7 +37,7 @@ function InlineSelfAssessment({ criteria, onSubmit, isLoading = false }) {
               {criterion.description}
             </p>
             <div className="flex items-center gap-1">
-              {[1, 2, 3, 4, 5].map((score) => (
+              {getScaleValues().map((score) => (
                 <button
                   key={score}
                   type="button"

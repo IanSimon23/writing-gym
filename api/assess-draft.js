@@ -1,13 +1,5 @@
-import Anthropic from '@anthropic-ai/sdk'
-
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY
-})
-
-function parseJsonResponse(text) {
-  const stripped = text.replace(/^```(?:json)?\s*\n?/i, '').replace(/\n?```\s*$/i, '')
-  return JSON.parse(stripped)
-}
+import { anthropic, parseJsonResponse } from './lib/anthropic.js'
+import { CONFIG } from './lib/config.js'
 
 export default async function handler(req, res) {
   // Only allow POST
@@ -60,8 +52,8 @@ Respond with JSON only, no other text:
 
   try {
     const message = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 2048,
+      model: CONFIG.model,
+      max_tokens: CONFIG.maxTokens.assessDraft,
       messages: [{ role: 'user', content: prompt }]
     })
 

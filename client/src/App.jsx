@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import PreDraftQuestions from './components/PreDraftQuestions'
 import Workspace from './components/Workspace'
+import { API_ENDPOINTS } from './config'
 
 const PHASES = {
   CONTEXT: 'context',
@@ -33,7 +34,7 @@ function App() {
     setError(null)
 
     try {
-      const response = await fetch('/api/extract-criteria', {
+      const response = await fetch(API_ENDPOINTS.EXTRACT_CRITERIA, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ context: session.context })
@@ -85,7 +86,7 @@ function App() {
 
     try {
       const iteration = session.iterations.find(i => i.id === iterationId)
-      const response = await fetch('/api/assess-draft', {
+      const response = await fetch(API_ENDPOINTS.ASSESS_DRAFT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
