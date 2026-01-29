@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PreDraftQuestions from './components/PreDraftQuestions'
 import Workspace from './components/Workspace'
-import { API_ENDPOINTS } from './config'
+import { useSession } from './hooks/useSession'
 
 const PHASES = {
   CONTEXT: 'context',
@@ -10,117 +10,33 @@ const PHASES = {
 
 function App() {
   const [phase, setPhase] = useState(PHASES.CONTEXT)
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const [session, setSession] = useState({
-    context: {
-      audience: '',
-      intent: '',
-      concerns: '',
-      type: ''
-    },
-    criteria: [],
-    iterations: [],
-    workingDraft: '',
-    currentIterationId: null
-  })
 
-  const updateContext = (newContext) => {
-    setSession(prev => ({ ...prev, context: newContext }))
-  }
+  const {
+    session,
+    isLoading,
+    error,
+    editorDisabled,
+    updateContext,
+    extractCriteria,
+    submitDraft,
+    submitSelfAssessment
+  } = useSession()
 
   const handleContextSubmit = async () => {
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      const response = await fetch(API_ENDPOINTS.EXTRACT_CRITERIA, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ context: session.context })
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.detail || data.error || 'Failed to extract criteria')
-      }
-      setSession(prev => ({ ...prev, criteria: data.criteria }))
+    const result = await extractCriteria()
+    if (result.success) {
       setPhase(PHASES.WORKSPACE)
-    } catch (err) {
-      setError(err.message)
-    } finally {
-      setIsLoading(false)
     }
   }
 
-  const handleDraftSubmit = (draft) => {
-    const newIterationId = session.iterations.length + 1
-    const newIteration = {
-      id: newIterationId,
-      draft,
-      selfAssessment: null,
-      aiAssessment: null
-    }
-
-    setSession(prev => ({
-      ...prev,
-      iterations: [...prev.iterations, newIteration],
-      currentIterationId: newIterationId
-    }))
+  const renderError = () => {
+    if (!error) return null
+    return (
+      <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+        {error}
+      </div>
+    )
   }
-
-  const handleSelfAssessSubmit = async (iterationId, scores) => {
-    // Update self-assessment immediately
-    setSession(prev => ({
-      ...prev,
-      iterations: prev.iterations.map(iter =>
-        iter.id === iterationId
-          ? { ...iter, selfAssessment: scores }
-          : iter
-      )
-    }))
-
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      const iteration = session.iterations.find(i => i.id === iterationId)
-      const response = await fetch(API_ENDPOINTS.ASSESS_DRAFT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          draft: iteration.draft,
-          criteria: session.criteria,
-          context: session.context
-        })
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.detail || data.error || 'Failed to get AI assessment')
-      }
-
-      setSession(prev => ({
-        ...prev,
-        iterations: prev.iterations.map(iter =>
-          iter.id === iterationId
-            ? { ...iter, aiAssessment: data }
-            : iter
-        ),
-        workingDraft: iteration.draft,
-        currentIterationId: null
-      }))
-    } catch (err) {
-      setError(err.message)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  // Determine if editor should be disabled (during self-assessment)
-  const editorDisabled = session.currentIterationId !== null
 
   const renderPhase = () => {
     switch (phase) {
@@ -128,11 +44,7 @@ function App() {
         return (
           <div className="max-w-3xl mx-auto">
             <div className="bg-white rounded-lg shadow p-6">
-              {error && (
-                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-                  {error}
-                </div>
-              )}
+              {renderError()}
               <PreDraftQuestions
                 context={session.context}
                 onUpdate={updateContext}
@@ -145,18 +57,16 @@ function App() {
       case PHASES.WORKSPACE:
         return (
           <>
-            {error && (
-              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm max-w-3xl mx-auto">
-                {error}
-              </div>
-            )}
+            <div className="max-w-3xl mx-auto">
+              {renderError()}
+            </div>
             <Workspace
               criteria={session.criteria}
               iterations={session.iterations}
               workingDraft={session.workingDraft}
               currentIterationId={session.currentIterationId}
-              onDraftSubmit={handleDraftSubmit}
-              onSelfAssessSubmit={handleSelfAssessSubmit}
+              onDraftSubmit={submitDraft}
+              onSelfAssessSubmit={submitSelfAssessment}
               isLoading={isLoading}
               editorDisabled={editorDisabled}
             />
