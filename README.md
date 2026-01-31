@@ -52,11 +52,15 @@ npm install --prefix client
 cp .env.example .env
 # Add your ANTHROPIC_API_KEY to .env
 
-# Run development server (uses Vercel CLI)
-npx vercel dev
+# Run development (two terminals)
+npx vercel dev --listen 3001    # Terminal 1: API functions
+npm run dev --prefix client     # Terminal 2: Vite dev server (hot reload)
 ```
 
 Visit `http://localhost:3000`
+
+> **Note**: The Vite dev server proxies `/api` requests to `vercel dev` on port 3001.
+> For a simpler (but slower) setup, just run `npx vercel dev` alone.
 
 ## Tech Stack
 
