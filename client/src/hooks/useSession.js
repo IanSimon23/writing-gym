@@ -24,6 +24,12 @@ export function useSession() {
 
   const clearError = () => setError(null)
 
+  const resetSession = () => {
+    setSession(INITIAL_SESSION)
+    setIsLoading(false)
+    setError(null)
+  }
+
   const updateContext = (newContext) => {
     setSession(prev => ({ ...prev, context: newContext }))
   }
@@ -141,6 +147,7 @@ export function useSession() {
 
     // Actions
     clearError,
+    resetSession,
     updateContext,
     extractCriteria,
     submitDraft,

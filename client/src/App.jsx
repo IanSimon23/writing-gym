@@ -17,6 +17,7 @@ function App() {
     error,
     editorDisabled,
     updateContext,
+    resetSession,
     extractCriteria,
     submitDraft,
     submitSelfAssessment
@@ -87,7 +88,7 @@ function App() {
           </div>
           {phase === PHASES.WORKSPACE && (
             <button
-              onClick={() => window.location.reload()}
+              onClick={() => { resetSession(); setPhase(PHASES.CONTEXT) }}
               className="text-sm text-gray-600 hover:text-gray-900 px-3 py-1.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
             >
               Start Over

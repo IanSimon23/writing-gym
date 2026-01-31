@@ -49,8 +49,8 @@ npm install --prefix api
 npm install --prefix client
 
 # Set up environment
-cp .env.example .env.local
-# Add your ANTHROPIC_API_KEY to .env.local
+cp .env.example .env
+# Add your ANTHROPIC_API_KEY to .env
 
 # Run development server (uses Vercel CLI)
 npx vercel dev
