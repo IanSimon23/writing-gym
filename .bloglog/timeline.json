@@ -94,6 +94,110 @@
       "timestamp": "2026-01-27T20:50:23.232Z",
       "type": "win",
       "content": "Writing Gym is live! Deployed to Vercel with serverless API functions and custom domain at writing-gym.curiouscoach.tools"
+    },
+    {
+      "id": "cf37baed-f74f-4ea0-94ca-5a8f45274570",
+      "timestamp": "2026-01-28T19:36:12.763Z",
+      "type": "note",
+      "content": "moved fully to Vercel structure"
+    },
+    {
+      "id": "dab055b9-ae42-4d32-b20b-5484050f113f",
+      "timestamp": "2026-01-28T19:36:56.134Z",
+      "type": "commit",
+      "message": "Remove Express server, commit to Vercel serverless architecture",
+      "gitHash": "e2d08cd4edbedba90a4093bf508f582ad73c0313"
+    },
+    {
+      "id": "178c678b-1d8e-4003-a683-06e8e7eeb057",
+      "timestamp": "2026-01-28T19:57:12.707Z",
+      "type": "note",
+      "content": "extracted shared config and utilities for API and client"
+    },
+    {
+      "id": "73b9be82-ac51-49e3-a9bd-882d88783854",
+      "timestamp": "2026-01-28T20:01:29.802Z",
+      "type": "commit",
+      "message": "Add shared config and utilities, remove hardcoded values",
+      "gitHash": "0fcc310ef02c9c8a3b233cc1e7286b264de955ec"
+    },
+    {
+      "id": "98cc5f6a-9ac0-4a84-91e4-d808da739f95",
+      "timestamp": "2026-01-28T20:20:07.901Z",
+      "type": "note",
+      "content": "added validation utilities and improved error handling across API and client"
+    },
+    {
+      "id": "a7cf407f-60c6-41d5-be1a-3f28b5b0f20a",
+      "timestamp": "2026-01-28T20:20:35.015Z",
+      "type": "commit",
+      "message": "Add validation utilities and improve error handling",
+      "gitHash": "caa2b5e70abce0dc404adfa71efb3363d7e4a5ed"
+    },
+    {
+      "id": "71197151-6e3f-4a19-b303-15ca6846a45f",
+      "timestamp": "2026-01-29T17:20:58.125Z",
+      "type": "note",
+      "content": "refactored App.jsx with useSession hook - 196 lines down to 107"
+    },
+    {
+      "id": "cff21b34-e165-473a-9d67-4b785d83d7ce",
+      "timestamp": "2026-01-29T17:21:26.814Z",
+      "type": "commit",
+      "message": "Extract useSession hook from App.jsx",
+      "gitHash": "49256a922ab638da6735ca78024f8d01cf26efa0"
+    },
+    {
+      "id": "a53a5094-abc8-4b46-a1a6-6fb0349449a8",
+      "timestamp": "2026-01-29T17:24:03.988Z",
+      "type": "note",
+      "content": "added environment validation - fails fast with clear error if API key missing"
+    },
+    {
+      "id": "ec1262d0-5725-46cd-9025-6d4caf5a665f",
+      "timestamp": "2026-01-29T17:24:12.592Z",
+      "type": "commit",
+      "message": "Add environment variable validation at handler startup",
+      "gitHash": "8cffc383a4ce718ce9f382e580a2e9666751d6b7"
+    },
+    {
+      "id": "2eafeb19-b94f-4fb7-bddf-048c8d0582e5",
+      "timestamp": "2026-01-29T17:27:17.584Z",
+      "type": "note",
+      "content": "updated docs to reflect new file structure (lib/, hooks/, config)"
+    },
+    {
+      "id": "a2fe648d-9cfd-4da5-8fe2-fb03a77485a2",
+      "timestamp": "2026-01-29T17:27:25.371Z",
+      "type": "commit",
+      "message": "Update documentation to reflect refactored structure",
+      "gitHash": "9a9fd459f56fb79a3707ea85233bc34d66b72f09"
+    },
+    {
+      "id": "574c8e21-b7d2-4622-b0e0-7b46e189fa3c",
+      "timestamp": "2026-01-31T15:45:42.160Z",
+      "type": "note",
+      "content": "replaced window.location.reload with resetSession, fixed .env instructions"
+    },
+    {
+      "id": "a6476b0e-dd34-4065-b6fb-f852e64e832c",
+      "timestamp": "2026-01-31T15:45:49.323Z",
+      "type": "commit",
+      "message": "Replace page reload with state reset, fix .env setup instructions",
+      "gitHash": "c1e8bc5480c5b340758ee1e0e98c0b1d3a168d48"
+    },
+    {
+      "id": "488c454c-c1f7-4881-99ed-1a8c6e9d95c0",
+      "timestamp": "2026-01-31T16:58:07.929Z",
+      "type": "win",
+      "content": "branded header with Writing Gym logo, Curious Coach Tools link, and GitHub link"
+    },
+    {
+      "id": "8fd5341f-f524-46a0-9872-6640054a7e6c",
+      "timestamp": "2026-01-31T16:58:17.711Z",
+      "type": "commit",
+      "message": "Add branded header with logos, GitHub link, and hot-reload dev setup",
+      "gitHash": "c58a3784c3dafaf5b676f1ae6b5f3cc7dde06848"
     }
   ]
 }
