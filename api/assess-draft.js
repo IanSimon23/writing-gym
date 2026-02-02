@@ -78,6 +78,8 @@ ${criteriaList}
 ${previousAssessmentBlock}**Draft to assess:**
 ${draft}
 
+Where a criterion includes [Writer's context: "..."], the writer has provided additional context about what they're trying to achieve. Factor this into your scoring and explicitly reference it in your reasoning — acknowledge whether the draft addresses the point they raised.
+
 For each criterion, provide:
 - A score (1-5)
 - Brief reasoning (1-2 sentences explaining why you gave that score, with specific examples from the draft)
